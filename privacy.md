@@ -4,7 +4,7 @@ title: TraderBot privacy notice
 
 # TraderBot privacy notice
 
-Last updated 3 October 2026
+Last updated 5 October 2026
 
 This notice explains what personal data TraderBot collects, why, where it is kept,
 who else sees it, and what happens when you ask us to delete it. It describes what
@@ -53,16 +53,37 @@ record. Section 8 explains why these records outlive a deletion request.
 **As you use it:** your conversations with the assistant, which means the messages you
 write, its replies, and conversation titles generated from the first 80 characters of
 your first message. Also your simulated orders and positions, your portfolio values,
-your watchlist, saved strategies and backtest results, your loss limits and position
-size settings, your notification preferences, and any trading rules and trading
-philosophy you write. Those last two are free text, so whatever you type is stored as
-you typed it.
+your watchlist, saved strategies and backtest results, your notification preferences, and the
+discipline rules and trading philosophy you write. Those last two are free text, so
+whatever you type is stored exactly as you typed it, including anything personal you put
+in them. The assistant reads your discipline rules when it checks an order, so they are
+also sent to Anthropic as described in section 5.
+
+**Your trading preferences:** the markets you allow, sectors you prefer or exclude,
+your trading budget, stop loss and take profit percentages, maximum position size, the
+confidence threshold your auto-trading uses, your daily, weekly and monthly loss limits,
+whether auto-trading and approval mode are on, and your trading mode. These are settings
+rather than content, but they are attached to your account and we list them so the
+picture is complete.
+
+**If you turn on two factor authentication:** the shared secret for your authenticator
+app, stored encrypted. It is never shown again after enrolment.
+
+**If you ever apply for live trading:** a one way hash of the attestation you submit. We
+store the hash, not the attestation text, and we cannot read the original back from it.
+Live trading is switched off for everyone at the platform level, so nothing uses this
+today, and section 2 of the terms records that TraderBot is paper trading only.
 
 **If you link your own brokerage account:** the API key and secret you supply, stored
-encrypted. This is optional and off by default.
+encrypted. This is optional and off by default. There is no button for it in the app:
+the screen was removed before launch, and the only way to reach it is to call the API
+directly. The route is still there and any signed in account can use it, so we disclose
+it rather than pretend it is gone.
 
 We do not ask for your postal address, phone number, date of birth, national insurance
-number, or any payment or card details. Nothing in TraderBot charges you.
+number, or any payment or card details. Nothing in TraderBot charges you. We do not ask
+for identity documents, and the live trading attestation described above is the only
+identity related field in the system.
 
 ## 4. Why we collect it, and our lawful basis
 
@@ -98,8 +119,10 @@ receive no personal data, and your browser does not contact them directly.
 
 There is no advertising network, no analytics or tracking in TraderBot, no third party
 cookies and no tracking pixels. We do not send you email or SMS: there is no email
-provider connected to TraderBot, which also means we cannot currently send you a
-password reset.
+provider connected to TraderBot. That means we send **no marketing or product email of
+any kind**, we cannot send you a password reset, and we cannot email you about changes
+to this notice. Your account record has a marketing consent field, and it is always
+false because nothing can act on it.
 
 ## 6. Cookies and browser storage
 
@@ -124,11 +147,15 @@ relies on the **EU Standard Contractual Clauses, Module Two (controller to proce
 together with the International Data Transfer Addendum to those clauses issued by the
 Information Commissioner**, both incorporated by Anthropic's Data Processing Addendum.
 
+We would rather describe this accurately than tidily, so the table says what the system
+actually does today, and names the two places where nothing deletes anything yet.
+
 | What | How long we keep it |
 |---|---|
-| Your account, settings, chat history and simulated trading records | While your account exists. An account inactive for 24 months is deleted |
-| Security and sign-in records | 12 months |
+| Your account, settings, chat history and simulated trading records | While your account exists, and removed immediately when you ask. **No job deletes dormant accounts yet**, so an unused account stays until you ask us to erase it |
+| Security and sign-in records | **Kept indefinitely at present.** No job deletes them yet. Section 8 explains why they survive an erasure request, and we will set a limit and state it here once one is enforced |
 | Application and load balancer request logs, including IP addresses | 30 days |
+| Google Cloud administrative and system event logs | **400 days, and this cannot be shortened.** Google writes these into a locked bucket to record changes made to the infrastructure. They are about our administrative actions rather than your use of the app, and we cannot delete or shorten them |
 | Database backups | The 7 most recent nightly backups |
 | Session tokens you have signed out of | Until the token would have expired anyway, then deleted automatically |
 
@@ -137,6 +164,12 @@ Information Commissioner**, both incorporated by Anthropic's Data Processing Add
 You have the right to ask for a copy of your data, to have it corrected, to have it
 erased, to restrict or object to how we use it, and to receive it in a portable form.
 To use any of them, email **info@solara.associates**. We will reply within one month.
+
+**Erasure is immediate, not scheduled.** It is not a request that sits in a queue: the
+deletion runs as a single database transaction the moment it is triggered, and either
+every item below is gone or, if it fails, nothing is changed and we are told. There is
+no thirty day grace period and no soft delete. Your session stops working in the same
+instant, so you cannot sign back in afterwards.
 
 Asking us to erase your account **deletes**: your chat history and every message in it,
 your simulated orders, positions and portfolio history, your saved strategies and
@@ -153,8 +186,10 @@ Those records are the audit trail: they are stored append only, and the applicat
 add to them and read them but cannot change or delete them. That restriction is what
 makes the trail worth having, because it means nobody can quietly edit the record of a
 security event afterwards, including us. The cost of that property is that an erasure
-request cannot reach into it. We keep these records for 12 months in our legitimate
-interest in the security and integrity of the service.
+request cannot reach into it: **your sign-in records remain after your account is gone**,
+and at present nothing removes them on any timetable. We keep them in our legitimate
+interest in the security and integrity of the service. If you want to know what is held
+about you in that trail, email us and we will tell you.
 
 Two further things are true and worth saying plainly. **Backups** taken before your
 request still contain the old values until they age out, which takes up to 7 nightly
@@ -186,7 +221,9 @@ and we will remove it.
 ## 12. Changes to this notice
 
 If we change what we collect or what we do with it, we will update this page and the date
-at the top. Where a change matters, we will say so in the product.
+at the top. Where a change matters, we will say so **in the app**. We cannot tell you by
+email, because as section 5 explains there is no email provider connected to TraderBot,
+so this page and the product itself are the only places a change will appear.
 
 ---
 
