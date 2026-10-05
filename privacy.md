@@ -74,11 +74,14 @@ store the hash, not the attestation text, and we cannot read the original back f
 Live trading is switched off for everyone at the platform level, so nothing uses this
 today, and section 2 of the terms records that TraderBot is paper trading only.
 
-**If you link your own brokerage account:** the API key and secret you supply, stored
-encrypted. This is optional and off by default. There is no button for it in the app:
-the screen was removed before launch, and the only way to reach it is to call the API
-directly. The route is still there and any signed in account can use it, so we disclose
-it rather than pretend it is gone.
+**Brokerage accounts: switched off.** TraderBot can store an API key and secret for
+your own brokerage, encrypted, so that it could one day place real orders. That feature
+is **disabled**. The screen was removed from the app before launch, and as of
+5 October 2026 the API routes behind it refuse every request with a 403 while live
+trading is off, which it is for everyone. You cannot submit a brokerage credential to
+us, through the app or any other way, and we hold none: we checked the database on
+5 October 2026 and there are no stored brokerage credentials at all. If we ever enable
+live trading we will update this notice first.
 
 We do not ask for your postal address, phone number, date of birth, national insurance
 number, or any payment or card details. Nothing in TraderBot charges you. We do not ask
